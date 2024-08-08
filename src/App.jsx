@@ -1,25 +1,4 @@
 import './App.css';
-import {
-  WiTime10,
-  WiNightAltRain,
-  WiUmbrella,
-  WiRaindrop,
-  WiSunrise,
-  WiHumidity,
-  WiMoonAltWaningCrescent2,
-  WiBarometer,
-  WiStrongWind,
-} from 'react-icons/wi';
-import {
-  TiCalendar,
-  TiEye,
-  TiAdjustBrightness,
-  TiThermometer,
-  TiChartLineOutline,
-} from 'react-icons/ti';
-
-import map from './assets/map.png';
-import moon from './assets/moon.png';
 
 import HourlyForecast from './components/features/HourlyForecast';
 import DailyForecast from './components/features/DailyForecast';

@@ -15,11 +15,12 @@ import {
 
 import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
+//import { cn } from '../utils/cn';
 
 const HourlyForecast = () => {
   return (
-    <Card>
-      <CardHeader></CardHeader>
+    <Card className="col-span-2 md:col-span-3 lg:col-span-4">
+      <CardHeader title="hourly Forecast" />
       <ul className="flex flex-row grow gap-8 overflow-clip">
         <li className="flex flex-col pt-4 justify-between content-center text-center">
           <span className=" ">Now</span>

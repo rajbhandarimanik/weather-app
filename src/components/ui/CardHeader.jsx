@@ -1,22 +1,37 @@
-import {
-  WiTime10,
-  WiNightAltRain,
-  WiUmbrella,
-  WiRaindrop,
-  WiSunrise,
-  WiHumidity,
-  WiMoonAltWaningCrescent2,
-  WiBarometer,
-  WiStrongWind,
-} from 'react-icons/wi';
+import { useDeferredValue, useEffect, useState } from 'react';
+import DynamicIcon from './DynamicIcon';
 
-const CardHeader = () => {
+const headersIcons = {
+  'hourly Forecast': 'WiTime10',
+  'precipitation map': 'WiUmbrella',
+  averages: 'TiChartLineOutline',
+  'daily forecast': 'TiCalendar',
+  'feels like': 'TiThermometer',
+  humidity: 'WiHumidity',
+  sunrise: 'WiSunrise',
+  sunset: 'WiSunset',
+  'uv index': 'TiAdjustBrightness',
+  pressure: 'WiBarometer',
+  moon: 'WiMoonAltWaningCrescent2',
+  visibility: 'TiEye',
+  wind: 'WiStrongWind',
+  precipitation: 'WiRaindrop',
+};
+
+const CardHeader = (props) => {
+  const { title } = props;
+  const [icon, setIcon] = useState('');
+
+  useEffect(() => {
+    if (headersIcons[title]) {
+      setIcon(headersIcons[title]);
+    }
+  }, [title]);
+
   return (
     <div className="flex flex-row gap-1 text-neutral-600 sticky top-0  ">
-      <WiTime10 />
-      <p className="text-xs uppercase font-bold text-nowrap ">
-        Hourly Forecast
-      </p>
+      <DynamicIcon iconName={icon} />
+      <p className="text-xs uppercase font-bold text-nowrap ">{title}</p>
     </div>
   );
 };

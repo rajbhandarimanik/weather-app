@@ -1,7 +1,10 @@
-const Card = (props) => {
+import { useEffect } from 'react';
+import { cn } from '../utils/cn';
+
+const Card = ({ children, className }) => {
   return (
-    <div className="col-span-2 md:col-span-3 lg:col-span-4 card">
-      <div className=" flex flex-col">{props.children}</div>
+    <div className={cn('card', className)}>
+      <div className="flex flex-col h-full">{children}</div>
     </div>
   );
 };
