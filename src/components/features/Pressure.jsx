@@ -9,7 +9,7 @@ const Pressure = () => {
     <Card className="col-span-1">
       <CardHeader title="pressure" />
       <div className="h-full flex flex-col justify-center content-center items-center">
-        <div className="fixed flex justify-center grow items-center">
+        <div className="fixed flex justify-center grow items-center pt-4">
           <svg
             width="120"
             height="120"

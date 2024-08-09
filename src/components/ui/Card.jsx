@@ -3,7 +3,7 @@ import { cn } from '../utils/cn';
 
 const Card = ({ children, className }) => {
   return (
-    <div className={cn('card', className)}>
+    <div className={cn('card', className, ' bg-slate-700/30 ', 'p-4')}>
       <div className="flex flex-col h-full">{children}</div>
     </div>
   );

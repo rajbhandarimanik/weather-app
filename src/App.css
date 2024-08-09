@@ -3,10 +3,8 @@
 @tailwind utilities;
 
 .card {
-  background-color: rgb(46, 47, 85, 0.4);
   border-radius: 8px;
   border: 1px solid;
   border-color: rgb(136, 136, 136, 0.24);
   backdrop-filter: blur(60px);
-  padding: 12px;
 }
