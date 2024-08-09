@@ -6,7 +6,7 @@ import CardHeader from '../ui/CardHeader';
 
 const Wind = () => {
   return (
-    <Card className="col-span-1 h-36">
+    <Card className="col-span-1">
       <CardHeader title="wind" />
       <div className="grow flex justify-center content-center mt-1">
         <div className="flex flex-col justify-center content-center z-10">

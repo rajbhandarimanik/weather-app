@@ -6,7 +6,7 @@ import CardHeader from '../ui/CardHeader';
 
 const Precipitation = () => {
   return (
-    <Card className="col-span-1 h-36">
+    <Card className="col-span-1">
       <CardHeader title="precipitation" />
       <div className="grow pt-2">
         <p className="text-3xl">3 mm</p>

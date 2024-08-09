@@ -8,7 +8,7 @@ import CardHeader from '../ui/CardHeader';
 
 const Averages = () => {
   return (
-    <Card className="col-span-1 h-36">
+    <Card className="col-span-1">
       <CardHeader title="averages" />
       <div className="grow flex flex-col">
         <span className="text-3xl">+2º</span>

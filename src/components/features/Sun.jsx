@@ -7,7 +7,7 @@ import Card from '../ui/Card';
 
 const Sun = () => {
   return (
-    <Card className="col-span-1 h-36">
+    <Card className="col-span-1">
       <div className="h-full flex flex-col">
         <CardHeader title="sunrise" />
         <p className="text-4xl pt-2 grow">

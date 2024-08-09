@@ -6,7 +6,7 @@ import CardHeader from '../ui/CardHeader';
 
 const Pressure = () => {
   return (
-    <Card className="col-span-1 h-36 ">
+    <Card className="col-span-1">
       <CardHeader title="pressure" />
       <div className="h-full flex flex-col justify-center content-center items-center">
         <div className="fixed flex justify-center grow items-center">
