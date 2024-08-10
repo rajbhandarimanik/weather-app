@@ -111,6 +111,7 @@ const DailyForecast = () => {
         <div className="flex flex-row grow justify-around content-center">
           <span>{Math.round(KelvinToCelsius(day.temperature.low))}º</span>
           <SvgBar
+            lowTemp={minTemp}
             minTemp={day.temperature.low}
             maxTemp={day.temperature.high}
             widthRatio={widthRatio}
@@ -132,7 +133,16 @@ const DailyForecast = () => {
 };
 export default DailyForecast;
 
-function SvgBar({ minTemp, maxTemp, widthRatio }) {
+function SvgBar({ lowTemp, minTemp, maxTemp, widthRatio }) {
+  console.log(lowTemp, minTemp, maxTemp, widthRatio);
+
+  const getStartingPosition = (low, min) => {
+    const difference = min - low;
+    let startPosition = Math.round(difference * widthRatio);
+    console.log(startPosition);
+    return startPosition;
+  };
+
   const getRectangleWidth = (low, high) => {
     if (widthRatio !== null) {
       const dayTempDifference = high - low;
@@ -160,7 +170,7 @@ function SvgBar({ minTemp, maxTemp, widthRatio }) {
           />
         </g>
         <rect
-          x="0"
+          x={getStartingPosition(lowTemp, minTemp)}
           width={getRectangleWidth(minTemp, maxTemp)}
           height="4"
           rx="2"
