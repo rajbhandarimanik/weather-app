@@ -26,6 +26,7 @@ const Pressure = () => {
                 rx="2"
                 fill="#D9D9D9"
                 //this is for the rotation of the pressure bar.
+                //the fist angle is rotating angle.
                 transform="rotate(0 60 60)"
               />
               <path
