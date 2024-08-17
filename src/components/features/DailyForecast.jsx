@@ -134,12 +134,9 @@ const DailyForecast = () => {
 export default DailyForecast;
 
 function SvgBar({ lowTemp, minTemp, maxTemp, widthRatio }) {
-  console.log(lowTemp, minTemp, maxTemp, widthRatio);
-
   const getStartingPosition = (low, min) => {
     const difference = min - low;
     let startPosition = Math.round(difference * widthRatio);
-    console.log(startPosition);
     return startPosition;
   };
 

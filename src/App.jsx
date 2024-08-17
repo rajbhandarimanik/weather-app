@@ -15,7 +15,20 @@ import Visibility from './components/features/Visibility';
 import Map from './components/features/Map';
 import Header from './components/features/Header';
 
+import { useWeatherData } from './api/api';
+import { useEffect, useState } from 'react';
+
 function App() {
+  const lat = 37.8136;
+  const lon = 144.9631;
+
+  const { data, isLoading, error } = useWeatherData(lat, lon);
+
+  const [modifiedData, setModifiedData] = useState([]);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error fetching data</div>;
+
   return (
     <div className="min-h-dvh min-w-full bg-gradient-to-b from-blue-950 to-purple-950 text-white pb-8">
       <Header />
