@@ -20,6 +20,6 @@ export const useWeatherData = (lat, lon) => {
   return useQuery({
     queryKey: ['weatherData', lat, lon],
     queryFn: () => fetchWeatherData(lat, lon),
-    staleTime: 0,
+    staleTime: 10 * 1000,
   });
 };

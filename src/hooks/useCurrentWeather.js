@@ -24,7 +24,9 @@ const useCurrentWeather = () => {
       high: data.data.list[0].main.temp_max.toFixed(0),
       humidity: data.data.list[0].main.humidity,
       wind_speed: (data.data.list[0].wind.speed * 3.6).toFixed(0),
+      wind_deg: data.data.list[0].wind.deg,
       visibility: data.data.list[0].visibility / 1000,
+      pressure: data.data.list[0].main.pressure,
     };
 
     console.log(currentWeather);
