@@ -1,3 +1,4 @@
+import useCurrentWeather from '../../hooks/useCurrentWeather';
 import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
 
@@ -6,10 +7,31 @@ import CardHeader from '../ui/CardHeader';
 }
 
 const Humidity = () => {
+  const { data: currentWeather, isLoading, isError } = useCurrentWeather();
+
+  if (isLoading) {
+    return (
+      <div className="h-full flex flex-col justify-center content-center items-center">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return <p>Error loading weather data. Please try again later.</p>;
+  }
+
+  if (!currentWeather) {
+    return null;
+  }
+
+  // Destructuring currentWeather object
+  const { humidity } = currentWeather;
+
   return (
     <Card className="col-span-1 card">
       <CardHeader title="humidity" />
-      <p className="text-4xl pt-2 grow">91%</p>
+      <p className="text-4xl pt-2 grow">{humidity}%</p>
       <p className="text-xs">The dew point is 8º right now.</p>
     </Card>
   );

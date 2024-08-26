@@ -9,6 +9,7 @@ import CardHeader from '../ui/CardHeader';
 import DynamicIcon from '../ui/DynamicIcon';
 
 import KelvinToCelsius from '../utils/kelvinToCelsius';
+import useDailyForecast from '../../hooks/useDailyForecast';
 
 const iconMap = {
   sunny: 'WiDaySunny',
@@ -68,7 +69,10 @@ const weatherData = [
 ];
 
 const DailyForecast = () => {
-  const [listData, setListData] = useState(weatherData);
+  const { data, isLoading } = useDailyForecast();
+  console.log(data);
+
+  const listData = data ? data : weatherData;
 
   const [maxTemp, setMaxTemp] = useState('273');
   const [minTemp, setMinTemp] = useState('273');
@@ -96,7 +100,9 @@ const DailyForecast = () => {
     }
   }, [listData]);
 
-  const listItems = listData.map((day, index) => {
+  const listItems = listData?.map((day, index) => {
+    const { icon: iconCode } = day;
+    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`; // Construct icon URL
     return (
       <li
         key={index}
@@ -106,17 +112,18 @@ const DailyForecast = () => {
           {index === 0 ? 'today' : day.day.toLowerCase().slice(0, 3)}
         </span>
         <div className="text-2xl w-12  flex flex-col items-center">
-          <DynamicIcon iconName={iconMap[day.icon]} />
+          {/* <DynamicIcon iconName={iconMap[day.icon]} /> */}
+          <img src={iconUrl} alt="Weather Icon" className="" />
         </div>
         <div className="flex flex-row grow justify-around content-center">
-          <span>{Math.round(KelvinToCelsius(day.temperature.low))}º</span>
+          <span>{day.temperature.low}º</span>
           <SvgBar
             lowTemp={minTemp}
             minTemp={day.temperature.low}
             maxTemp={day.temperature.high}
             widthRatio={widthRatio}
           />
-          <span>{Math.round(KelvinToCelsius(day.temperature.high))}º</span>
+          <span>{day.temperature.high}º</span>
         </div>
       </li>
     );
