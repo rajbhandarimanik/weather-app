@@ -1,16 +1,40 @@
 {
   /** Wind Speed and Direction */
 }
+import { useEffect, useState } from 'react';
+import useCurrentWeather from '../../hooks/useCurrentWeather';
 import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
 
 const Wind = () => {
+  const { data: currentWeather, isLoading, isError } = useCurrentWeather();
+
+  if (isLoading) {
+    return (
+      <section className="container mx-auto flex justify-center  py-8">
+        <div className="w-fit text-center">
+          <p>Loading...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (isError) {
+    return <p>Error loading weather data. Please try again later.</p>;
+  }
+
+  if (!currentWeather) {
+    return null;
+  }
+
+  const { windSpeed, windDeg } = currentWeather;
+
   return (
     <Card className="col-span-1">
       <CardHeader title="wind" />
       <div className="grow flex justify-center content-center mt-1">
         <div className="flex flex-col justify-center content-center z-10">
-          <span className="text-base leading-3">15</span>
+          <span className="text-base leading-3">{windSpeed}</span>
           <span className="text-xs ">km/h</span>
         </div>
         <svg
@@ -56,7 +80,7 @@ const Wind = () => {
             d="M0 50L9.80392 55.7735L8.33333 51H92.2301C92.5834 52.839 94.172 54.2265 96.0784 54.2265C98.2443 54.2265 100 52.4356 100 50.2265C100 48.0174 98.2443 46.2265 96.0784 46.2265C94.3321 46.2265 92.8523 47.3909 92.3447 49H8.33333L9.80392 44.2265L0 50ZM94.1176 50.2265C94.1176 49.1219 94.9955 48.2265 96.0784 48.2265C97.1613 48.2265 98.0392 49.1219 98.0392 50.2265C98.0392 51.3311 97.1613 52.2265 96.0784 52.2265C94.9955 52.2265 94.1176 51.3311 94.1176 50.2265Z"
             fill="white"
             //rotation angle is the first parameter and respectively for the center of rotation
-            transform={`rotate(${342 - 90} 50 50)`}
+            transform={`rotate(${-90 + windDeg} 50 50)`}
           />
           <circle cx="50" cy="50" r="24" fill="#434464" />
         </svg>
