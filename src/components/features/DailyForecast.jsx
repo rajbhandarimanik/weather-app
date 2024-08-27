@@ -70,7 +70,6 @@ const weatherData = [
 
 const DailyForecast = () => {
   const { data, isLoading } = useDailyForecast();
-  console.log(data);
 
   const listData = data ? data : weatherData;
 
