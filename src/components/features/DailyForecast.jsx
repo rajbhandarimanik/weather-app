@@ -8,7 +8,6 @@ import CardHeader from '../ui/CardHeader';
 
 import DynamicIcon from '../ui/DynamicIcon';
 
-import KelvinToCelsius from '../utils/kelvinToCelsius';
 import useDailyForecast from '../../hooks/useDailyForecast';
 
 const iconMap = {
