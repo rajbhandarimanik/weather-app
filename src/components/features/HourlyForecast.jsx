@@ -48,7 +48,9 @@ const HourlyForecast = () => {
   return (
     <Card className="col-span-2 md:col-span-3 lg:col-span-4">
       <CardHeader title="hourly Forecast" />
-      <ul className="flex flex-row grow gap-8 overflow-clip">{listItems}</ul>
+      <ul className="flex flex-row grow gap-8 overflow-auto scrollbar-thin scrollbar-webkit">
+        {listItems}
+      </ul>
     </Card>
   );
 };

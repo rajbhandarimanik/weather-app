@@ -2,10 +2,22 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 const API_KEY = '3d4034bdb6abc1f6f797d2a8238e0c63'; // Replace with your actual API key
-const BASE_URL = 'https://api.openweathermap.org/data/2.5/forecast';
+const BASE_URL = 'https://api.openweathermap.org/data/2.5/';
+
+const fetchCurrentWeather = async (lat, lon) => {
+  const response = await axios.get(BASE_URL + 'weather', {
+    params: {
+      lat: lat,
+      lon: lon,
+      appid: API_KEY,
+      units: 'metric',
+    },
+  });
+  return response.data;
+};
 
 const fetchWeatherData = async (lat, lon) => {
-  const response = await axios.get(BASE_URL, {
+  const response = await axios.get(BASE_URL + 'forecast', {
     params: {
       lat: lat,
       lon: lon,
@@ -20,6 +32,14 @@ export const useWeatherData = (lat, lon) => {
   return useQuery({
     queryKey: ['weatherData', lat, lon],
     queryFn: () => fetchWeatherData(lat, lon),
+    staleTime: 10 * 1000,
+  });
+};
+
+export const useCurrentWeatherData = (lat, lon) => {
+  return useQuery({
+    queryKey: ['currentWeatherData', lat, lon],
+    queryFn: () => fetchCurrentWeather(lat, lon),
     staleTime: 10 * 1000,
   });
 };

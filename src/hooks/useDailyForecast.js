@@ -66,9 +66,9 @@ const useDailyForecast = () => {
   }
 
   if (data) {
-    console.log(data.data);
+    // console.log(data.data);
     let modifiedData = processWeatherData(data.data);
-    console.log(modifiedData);
+    // console.log(modifiedData);
     return { data: modifiedData };
   }
 

@@ -1,10 +1,10 @@
-import { useWeatherData } from '../api/api';
+import { useCurrentWeatherData } from '../api/api';
 
 const useCurrentWeather = () => {
   const lat = -37.8136;
   const lon = 144.9631;
 
-  const { data, error, isLoading, isError } = useWeatherData(lat, lon);
+  const { data, isLoading, isError, error } = useCurrentWeatherData(lat, lon);
 
   if (isLoading) {
     return { data: null, isLoading: true };
@@ -17,19 +17,19 @@ const useCurrentWeather = () => {
 
   if (data) {
     let currentWeather = {
-      city: data.data.city.name,
-      temp: data.data.list[0].main.temp,
-      weather: data.data.list[0].weather[0].main,
-      low: data.data.list[0].main.temp_min,
-      high: data.data.list[0].main.temp_max.toFixed(0),
-      humidity: data.data.list[0].main.humidity,
-      windSpeed: (data.data.list[0].wind.speed * 3.6).toFixed(0),
-      windDeg: data.data.list[0].wind.deg,
-      visibility: data.data.list[0].visibility / 1000,
-      pressure: data.data.list[0].main.pressure,
+      city: data.name,
+      temp: data.main.temp,
+      weather: data.weather.description,
+      low: data.main.temp_min.toFixed(0),
+      high: data.main.temp_max.toFixed(0),
+      humidity: data.main.humidity,
+      windSpeed: (data.wind.speed * 3.6).toFixed(0),
+      windDeg: data.wind.deg,
+      visibility: data.visibility / 1000,
+      pressure: data.main.pressure,
+      sunrise: data.sys.sunrise,
+      sunset: data.sys.sunset,
     };
-
-    console.log(currentWeather);
 
     return { data: currentWeather };
   }

@@ -5,9 +5,33 @@ import { useEffect, useState } from 'react';
 import useCurrentWeather from '../../hooks/useCurrentWeather';
 import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
+import { animate, useAnimate } from 'framer-motion';
+import { data } from 'autoprefixer';
+import { svg } from 'leaflet';
 
 const Wind = () => {
   const { data: currentWeather, isLoading, isError } = useCurrentWeather();
+
+  const [svg, setSvg] = useAnimate();
+
+  useEffect(() => {
+    if (currentWeather) {
+      // Example final angle value, you can pass the angle dynamically based on wind direction or another factor.
+      const finalAngle = currentWeather.windDeg || -90;
+
+      // Initial
+      setSvg('.needle', {
+        rotate: -90, // Adjust rotation based on wind degree
+        transition: { duration: 2, ease: 'easeInOut' }, // Customize duration and easing
+      });
+
+      // Animate to the wind direction
+      setSvg('.needle', {
+        rotate: -90 + currentWeather.windDeg, // Adjust rotation based on wind degree
+        transition: { duration: 2, ease: 'easeInOut' }, // Customize duration and easing
+      });
+    }
+  }, [currentWeather]);
 
   if (isLoading) {
     return (
@@ -44,6 +68,7 @@ const Wind = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="absolute"
+          ref={svg}
         >
           <circle
             cx="50"
@@ -75,6 +100,7 @@ const Wind = () => {
             fill="#AAAABA"
           />
           <path
+            className="needle"
             fill-rule="evenodd"
             clip-rule="evenodd"
             d="M0 50L9.80392 55.7735L8.33333 51H92.2301C92.5834 52.839 94.172 54.2265 96.0784 54.2265C98.2443 54.2265 100 52.4356 100 50.2265C100 48.0174 98.2443 46.2265 96.0784 46.2265C94.3321 46.2265 92.8523 47.3909 92.3447 49H8.33333L9.80392 44.2265L0 50ZM94.1176 50.2265C94.1176 49.1219 94.9955 48.2265 96.0784 48.2265C97.1613 48.2265 98.0392 49.1219 98.0392 50.2265C98.0392 51.3311 97.1613 52.2265 96.0784 52.2265C94.9955 52.2265 94.1176 51.3311 94.1176 50.2265Z"

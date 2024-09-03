@@ -18,7 +18,6 @@ const Pressure = () => {
     const ratio = (pressure - minPressure) / (maxPressure - minPressure);
 
     const angle = ratio * angleRange + minAngle;
-    console.log(angle);
 
     // Ensure the angle wraps around correctly (0 and 360 degrees are treated the same)
     return angle < 360 ? angle : angle - 360;

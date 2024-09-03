@@ -19,7 +19,7 @@ const headersIcons = {
 };
 
 const CardHeader = (props) => {
-  const { title } = props;
+  const { title, active } = props;
   const [icon, setIcon] = useState('');
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const CardHeader = (props) => {
   }, [title]);
 
   return (
-    <div className="flex flex-row gap-1 text-neutral-600 top-0">
+    <div className="flex flex-row gap-1 text-neutral-400 top-0">
       <DynamicIcon iconName={icon} />
       <p className="text-xs uppercase font-bold text-nowrap ">{title}</p>
     </div>

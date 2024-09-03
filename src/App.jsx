@@ -18,12 +18,20 @@ import Header from './components/features/Header';
 import { useWeatherData } from './api/api';
 import { useEffect, useState } from 'react';
 
-function App() {
-  return (
-    <div className="min-h-dvh min-w-full bg-gradient-to-b from-blue-950 to-purple-950 text-white pb-8">
-      <Header />
+import { motion } from 'framer-motion';
 
-      <section className="container px-4 mx-auto xl:w-9/12 2xl:w-7/12 ">
+function App() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  return (
+    <div className="min-h-dvh min-w-full bg-gradient-to-b from-blue-950 to-purple-950 text-white pb-8 scrollbar-thin scrollbar-webkit">
+      <Header isExpanded={isExpanded} />
+
+      <section className="container px-4 md:px-4 mx-auto xl:w-9/12 2xl:w-7/12 mt-16 md:mt-6 pt-4">
         <div
           className="grid grid-cols-2 grid-rows-4 auto-rows-fr gap-3 grid-flow-row-dense
         sm:grid-cols-2 
@@ -34,7 +42,7 @@ function App() {
         >
           <HourlyForecast />
 
-          <Map />
+          <Map handleClick={handleClick} isExpanded={isExpanded} />
 
           <DailyForecast />
 

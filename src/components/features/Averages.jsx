@@ -2,14 +2,17 @@
   /** Average index temp */
 }
 
-import { TiChartLineOutline } from 'react-icons/ti';
+import { TiChartLineOutline, TiInfo } from 'react-icons/ti';
 import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
 
 const Averages = () => {
   return (
     <Card className="col-span-1">
-      <CardHeader title="averages" />
+      <div className="flex flex-row justify-between">
+        <CardHeader title="averages" />
+        <TiInfo className="text-yellow-500 " />
+      </div>
       <div className="grow flex flex-col">
         <span className="text-3xl">+2º</span>
         <span className="text-xs pr-4">above average daily high</span>

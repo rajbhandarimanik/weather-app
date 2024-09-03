@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import useCurrentWeather from '../../hooks/useCurrentWeather';
+import { motion } from 'framer-motion';
 
-const Header = () => {
+const Header = ({ isExpanded }) => {
   const { data: currentWeather, isLoading, isError } = useCurrentWeather();
 
   if (isLoading) {
     return (
-      <section className="container mx-auto flex justify-center  py-8">
+      <section className="container mx-auto flex justify-center py-8">
         <div className="w-fit text-center">
           <p>Loading...</p>
         </div>
@@ -28,13 +29,22 @@ const Header = () => {
 
   return (
     <section className="container mx-auto flex justify-center  py-8">
-      <div className="w-fit text-center">
-        <h1 className="text-3xl">{city}</h1>
-        <h3 className="uppercase font-bold text-xs">{city}</h3>
-        <span className="text-6xl font-thin">{Math.floor(temp)}º</span>
-        <h2 className="text-lg text-semibold">Partly Cloudy</h2>
-        <p className="text-lg text-semibold">{`L:${low}º H:${high}º`}</p>
-      </div>
+      <motion.div
+        className="header-container"
+        animate={{
+          x: isExpanded ? -200 : 0, // Move left by 200px when expanded
+          opacity: isExpanded ? 1 : 1, // Reduce opacity
+          transition: { duration: 0.5 },
+        }}
+      >
+        <div className="w-fit text-center">
+          <h1 className="text-3xl">{city}</h1>
+          <h3 className="uppercase font-bold text-xs">{city}</h3>
+          <span className="text-6xl font-thin">{Math.floor(temp)}º</span>
+          <h2 className="text-lg text-semibold">Partly Cloudy</h2>
+          <p className="text-lg text-semibold">{`L:${low}º H:${high}º`}</p>
+        </div>
+      </motion.div>
     </section>
   );
 };

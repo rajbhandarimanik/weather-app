@@ -4,18 +4,29 @@
 import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
 import { useRef } from 'react';
+import { TiInfo } from 'react-icons/ti';
 
 import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { motion } from 'framer-motion';
 
-const Map = () => {
+import { useMapEvents } from 'react-leaflet/hooks';
+
+const Map = ({ handleClick, isExpanded }) => {
   const mapRef = useRef(null);
   const latitude = -37.8136;
   const longitude = 144.9631;
 
+  // const expandMap = (handleClick) => {
+  //     handleClick();
+  // }
+
   return (
     <Card className="col-span-2  row-span-2">
-      <CardHeader title="precipitation map" />
+      <div className="flex flex-row justify-between">
+        <CardHeader title="sunrise" />
+        <TiInfo className="text-yellow-500 " />
+      </div>
 
       <div className="grow mt-2 rounded-lg border border-slate-500 truncate">
         <div className="h-full">
@@ -25,7 +36,9 @@ const Map = () => {
             center={[latitude, longitude]}
             zoom={9}
             ref={mapRef}
+            scrollWheelZoom={false}
             style={{ height: '100%', width: '100%' }}
+            dragging={false}
           >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
