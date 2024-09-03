@@ -35,7 +35,7 @@ const HourlyForecast = () => {
         key={index}
         className="flex flex-col justify-between content-center text-center"
       >
-        <span className="text-md md:text-sm ">
+        <span className="text-md md:text-sm text-nowrap opacity-60">
           {formatUnixToTime(dateTime)}
         </span>
         <div className="w-8">

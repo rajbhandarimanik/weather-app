@@ -93,7 +93,7 @@ const Pressure = () => {
             <g clipPath="url(#clip0_9_951)">
               {/* <!-- Gradient shadow rectangle --> */}
               <rect
-                x={98 + 6}
+                x={97 + 6}
                 y={57 - 6}
                 width="12"
                 height="16"
@@ -103,7 +103,7 @@ const Pressure = () => {
                 transform={`rotate(${calculateRotationAngle(pressure)} 60 60)`}
               />
               <rect
-                x="98"
+                x="99"
                 y="57"
                 width="16"
                 height="4"

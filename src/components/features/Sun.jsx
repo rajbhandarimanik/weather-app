@@ -36,6 +36,8 @@ const Sun = () => {
 
   // console.log(sunrise);
 
+  const { sunrise, sunset } = currentWeather;
+
   return (
     <Card className="col-span-1">
       <div className="h-full flex flex-col">
@@ -53,7 +55,7 @@ const Sun = () => {
           currentTime={currentTime}
         /> */}
 
-        <p className="text-xs">Sunset:5:17 PM</p>
+        <p className="text-xs">Sunset: {formatUnixToTime(sunset)}</p>
       </div>
     </Card>
   );
