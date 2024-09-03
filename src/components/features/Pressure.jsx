@@ -25,9 +25,11 @@ const Pressure = () => {
 
   if (isLoading) {
     return (
-      <div className="h-full flex flex-col justify-center content-center items-center">
-        <p>Loading...</p>
-      </div>
+      <Card>
+        <div className="h-full flex flex-col justify-center content-center items-center">
+          <p>Loading...</p>
+        </div>
+      </Card>
     );
   }
 

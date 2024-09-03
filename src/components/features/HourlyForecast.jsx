@@ -35,12 +35,14 @@ const HourlyForecast = () => {
         key={index}
         className="flex flex-col justify-between content-center text-center"
       >
-        <span className=" text-sm ">{formatUnixToTime(dateTime)}</span>
-        <div>
+        <span className="text-md md:text-sm ">
+          {formatUnixToTime(dateTime)}
+        </span>
+        <div className="w-8">
           {/* <WiNightAltRain /> */}
-          <img src={iconUrl} alt="Weather Icon" className="" />
+          <img src={iconUrl} alt="Weather Icon" />
         </div>
-        <span className="text-md ">{Math.round(temp)}º</span>{' '}
+        <span className="text-lg sm:text-md ">{Math.round(temp)}º</span>{' '}
       </li>
     );
   });
@@ -48,7 +50,7 @@ const HourlyForecast = () => {
   return (
     <Card className="col-span-2 md:col-span-3 lg:col-span-4">
       <CardHeader title="hourly Forecast" />
-      <ul className="flex flex-row grow gap-6 overflow-x-auto scrollbar-thin scrollbar-webkit pt-2">
+      <ul className="flex flex-row grow gap-6 overflow-x-auto scrollbar-thin scrollbar-webkit py-2">
         {listItems}
       </ul>
     </Card>

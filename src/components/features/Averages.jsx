@@ -13,9 +13,9 @@ const Averages = () => {
         <CardHeader title="averages" />
         <TiInfo className="text-yellow-500 " />
       </div>
-      <div className="grow flex flex-col">
+      <div className="grow flex flex-col mt-2">
         <span className="text-3xl">+2º</span>
-        <span className="text-xs pr-4">above average daily high</span>
+        <span className="text-xs">above average daily high</span>
       </div>
       <div>
         <div className="flex flex-row text-xs">
@@ -24,7 +24,7 @@ const Averages = () => {
         </div>
         <div className="flex flex-row text-xs">
           <span className="grow text-gray-400 font-semibold  ">Average</span>
-          <span className=" font-semibold ">H:14º</span>
+          <span className="font-semibold ">H:14º</span>
         </div>
       </div>
     </Card>

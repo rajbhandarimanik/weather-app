@@ -35,11 +35,11 @@ const Wind = () => {
 
   if (isLoading) {
     return (
-      <section className="container mx-auto flex justify-center  py-8">
-        <div className="w-fit text-center">
+      <Card>
+        <div className="h-full flex flex-col justify-center content-center items-center">
           <p>Loading...</p>
         </div>
-      </section>
+      </Card>
     );
   }
 

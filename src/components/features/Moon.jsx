@@ -16,7 +16,7 @@ const Moon = () => {
         <TiInfo className="text-yellow-500 " />
       </div>
       <div className="grow flex justify-center content-center mt-1">
-        <img src={moon} alt="moon image" />
+        <img src={moon} alt="moon image" className=" object-contain" />
       </div>
     </Card>
   );

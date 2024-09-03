@@ -11,9 +11,11 @@ const Visibility = () => {
 
   if (isLoading) {
     return (
-      <div className="h-full flex flex-col justify-center content-center items-center">
-        <p>Loading...</p>
-      </div>
+      <Card>
+        <div className="h-full flex flex-col justify-center content-center items-center">
+          <p>Loading...</p>
+        </div>
+      </Card>
     );
   }
 
@@ -30,7 +32,7 @@ const Visibility = () => {
   return (
     <Card className="col-span-1">
       <CardHeader title="visibility" />
-      <p className="text-3xl pt-2 grow">{visibility} km</p>
+      <p className="text-3xl mt-2 grow">{visibility} km</p>
       <p className="text-xs opacity-60">Light haze is affecting visibility.</p>
     </Card>
   );
