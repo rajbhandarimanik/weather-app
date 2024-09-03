@@ -30,8 +30,8 @@ const Visibility = () => {
   return (
     <Card className="col-span-1">
       <CardHeader title="visibility" />
-      <p className="text-4xl pt-2 grow">{visibility} km</p>
-      <p className="text-xs">Light haze is affecting visibility.</p>
+      <p className="text-3xl pt-2 grow">{visibility} km</p>
+      <p className="text-xs opacity-60">Light haze is affecting visibility.</p>
     </Card>
   );
 };

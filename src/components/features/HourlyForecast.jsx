@@ -17,7 +17,7 @@ import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
 //import { cn } from '../utils/cn';
 
-import { formatUnixToTime } from '../utils/formatUnixToTime';
+import { formatUnixToTime } from '../../utils/formatUnixToTime';
 
 import useHourlyForecast from '../../hooks/useHourlyForecast';
 import { useEffect, useState } from 'react';
@@ -33,10 +33,10 @@ const HourlyForecast = () => {
     return (
       <li
         key={index}
-        className="flex flex-col pt-4 justify-between content-center text-center"
+        className="flex flex-col justify-between content-center text-center"
       >
-        <span className=" ">{formatUnixToTime(dateTime)}</span>
-        <div className="text-4xl">
+        <span className=" text-sm ">{formatUnixToTime(dateTime)}</span>
+        <div>
           {/* <WiNightAltRain /> */}
           <img src={iconUrl} alt="Weather Icon" className="" />
         </div>
@@ -48,7 +48,7 @@ const HourlyForecast = () => {
   return (
     <Card className="col-span-2 md:col-span-3 lg:col-span-4">
       <CardHeader title="hourly Forecast" />
-      <ul className="flex flex-row grow gap-8 overflow-auto scrollbar-thin scrollbar-webkit">
+      <ul className="flex flex-row grow gap-6 overflow-x-auto scrollbar-thin scrollbar-webkit pt-2">
         {listItems}
       </ul>
     </Card>

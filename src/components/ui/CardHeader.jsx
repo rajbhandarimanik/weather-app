@@ -29,7 +29,7 @@ const CardHeader = (props) => {
   }, [title]);
 
   return (
-    <div className="flex flex-row gap-1 text-neutral-400 top-0">
+    <div className="flex flex-row gap-1 text-slate-500 top-0">
       <DynamicIcon iconName={icon} />
       <p className="text-xs uppercase font-bold text-nowrap ">{title}</p>
     </div>

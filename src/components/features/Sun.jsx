@@ -3,7 +3,7 @@ import Card from '../ui/Card';
 
 import useCurrentWeather from '../../hooks/useCurrentWeather';
 
-import { formatUnixToTime } from '../utils/formatUnixToTime';
+import { formatUnixToTime } from '../../utils/formatUnixToTime';
 import { TiInfo } from 'react-icons/ti';
 
 {
@@ -20,7 +20,7 @@ const Sun = () => {
           <CardHeader title="sunrise" />
         </div>
 
-        <p className="text-4xl pt-2 grow">
+        <p className="text-3xl pt-2 grow">
           7:33<span className="text-base">AM</span>
         </p>
         <p className="text-xs">Sunset:5:17 PM</p>

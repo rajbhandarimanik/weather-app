@@ -14,8 +14,8 @@ const UvIndex = () => {
         <TiInfo className="text-yellow-500 " />
       </div>
       <div className="grow pt-2">
-        <p className="text-4xl">0</p>
-        <p className="text-md capitalize">low</p>
+        <p className="text-3xl">0</p>
+        <p className="text-sm capitalize">low</p>
       </div>
       <p className="text-xs">Low levels all day.</p>
     </Card>

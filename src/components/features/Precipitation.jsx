@@ -10,9 +10,9 @@ const Precipitation = () => {
       <CardHeader title="precipitation" />
       <div className="grow pt-2">
         <p className="text-3xl">3 mm</p>
-        <p className="text-sm">in last 6h</p>
+        <p className="text-xs">in last 6h</p>
       </div>
-      <p className="text-xs">3 mm expected in next 24h.</p>
+      <p className="text-xs opacity-60">3 mm expected in next 24h.</p>
     </Card>
   );
 };

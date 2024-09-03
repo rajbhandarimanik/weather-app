@@ -28,7 +28,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-dvh min-w-full bg-gradient-to-b from-blue-950 to-purple-950 text-white pb-8 scrollbar-thin scrollbar-webkit">
+    <div className="min-h-dvh min-w-full bg-gradient-to-b from-blue-950 to-purple-950 text-white pb-4">
       <Header isExpanded={isExpanded} />
 
       <section className="container px-4 md:px-4 mx-auto xl:w-9/12 2xl:w-7/12 mt-16 md:mt-6 pt-4">

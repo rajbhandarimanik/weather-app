@@ -120,9 +120,9 @@ const Pressure = () => {
           </svg>
         </div>
         <div className="grow flex flex-col basis-1/2 justify-center content-center text-center">
-          <span className="text-3xl">=</span>
+          <span className="text-2xl">=</span>
           <span className="text-xl font-semibold leading-4">{pressure}</span>
-          <span className="text-xs ">hPa</span>
+          <span className="text-xs opacity-60 ">hPa</span>
         </div>
         <div className="w-full flex flex-row text-nowrap justify-around text-xs">
           <p>Low</p>

@@ -58,7 +58,7 @@ const Wind = () => {
       <CardHeader title="wind" />
       <div className="grow flex justify-center content-center mt-1">
         <div className="flex flex-col justify-center content-center z-10">
-          <span className="text-base leading-3">{windSpeed}</span>
+          <span className="text-base text-center leading-3">{windSpeed}</span>
           <span className="text-xs ">km/h</span>
         </div>
         <svg

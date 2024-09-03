@@ -31,8 +31,8 @@ const Humidity = () => {
   return (
     <Card className="col-span-1 card">
       <CardHeader title="humidity" />
-      <p className="text-4xl pt-2 grow">{humidity}%</p>
-      <p className="text-xs">The dew point is 8º right now.</p>
+      <p className="text-3xl pt-2 grow">{humidity}%</p>
+      <p className="text-xs opacity-60">The dew point is 8º right now.</p>
     </Card>
   );
 };

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-const API_KEY = '3d4034bdb6abc1f6f797d2a8238e0c63'; // Replace with your actual API key
+const API_KEY = import.meta.env.VITE_API_KEY; // Replace with your actual API key
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/';
 
 const fetchCurrentWeather = async (lat, lon) => {

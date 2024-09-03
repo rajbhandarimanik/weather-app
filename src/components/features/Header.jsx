@@ -38,11 +38,12 @@ const Header = ({ isExpanded }) => {
         }}
       >
         <div className="w-fit text-center">
-          <h1 className="text-3xl">{city}</h1>
+          <h1 className="text-2xl">{city}</h1>
           <h3 className="uppercase font-bold text-xs">{city}</h3>
           <span className="text-6xl font-thin">{Math.floor(temp)}º</span>
-          <h2 className="text-lg text-semibold">Partly Cloudy</h2>
-          <p className="text-lg text-semibold">{`L:${low}º H:${high}º`}</p>
+
+          <h2 className="text-lg text-semibold leading-3">Partly Cloudy</h2>
+          <p className="text-md text-semibold">{`L:${low}º H:${high}º`}</p>
         </div>
       </motion.div>
     </section>

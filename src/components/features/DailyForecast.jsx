@@ -104,16 +104,16 @@ const DailyForecast = () => {
     return (
       <li
         key={index}
-        className="flex grow flex-row gap-4 items-center first:border-t first:border-slate-700"
+        className="flex grow flex-row justify-between items-center first:border-t first:border-slate-700"
       >
-        <span className="capitalize w-12">
+        <span className="capitalize w-12 text-md">
           {index === 0 ? 'today' : day.day.toLowerCase().slice(0, 3)}
         </span>
-        <div className="text-2xl w-12  flex flex-col items-center">
+        <div className="w-12 flex flex-col items-center">
           {/* <DynamicIcon iconName={iconMap[day.icon]} /> */}
           <img src={iconUrl} alt="Weather Icon" className="" />
         </div>
-        <div className="flex flex-row grow justify-around content-center">
+        <div className="flex flex-row gap-4 justify-around content-center">
           <span>{day.temperature.low}º</span>
           <SvgBar
             lowTemp={minTemp}
