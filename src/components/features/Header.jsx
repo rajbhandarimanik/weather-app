@@ -1,15 +1,29 @@
 import { useEffect, useState } from 'react';
 import useCurrentWeather from '../../hooks/useCurrentWeather';
-import { motion } from 'framer-motion';
+import { LayoutGroup, motion } from 'framer-motion';
 
-const Header = ({ isExpanded }) => {
+const Header = ({}) => {
   const { data: currentWeather, isLoading, isError } = useCurrentWeather();
+  const loading = true;
 
   if (isLoading) {
     return (
       <section className="container mx-auto flex justify-center py-8">
-        <div className="w-fit text-center">
-          <p>Loading...</p>
+        <div className="w-fit text-center space-y-0">
+          <div className="animate-pulse">
+            <h1 className="bg-gray-500/30 rounded h-4 w-32 mb-2"></h1>
+            <h3 className="bg-gray-500/30 rounded h-2 w-16 mx-auto mb-1"></h3>
+          </div>
+
+          <div className="lds-ripple ">
+            <div></div>
+            <div></div>
+          </div>
+
+          <div className="animate-pulse">
+            <h2 className="bg-gray-500/30 rounded h-3 w-24 mx-auto mb-1"></h2>
+            <p className="bg-gray-500/30 rounded h-2 w-16 mx-auto"></p>
+          </div>
         </div>
       </section>
     );
@@ -31,10 +45,12 @@ const Header = ({ isExpanded }) => {
     <section className="container mx-auto flex justify-center  py-8">
       <motion.div
         className="header-container"
+        initial={{ opacity: 0 }}
         animate={{
-          x: isExpanded ? -200 : 0, // Move left by 200px when expanded
-          opacity: isExpanded ? 1 : 1, // Reduce opacity
-          transition: { duration: 0.5 },
+          //x: isExpanded ? -200 : 0, // Move left by 200px when expanded
+          //opacity: isExpanded ? 0 : 1, // Reduce opacity
+          opacity: 1,
+          transition: { duration: 1 },
         }}
       >
         <div className="w-fit text-center">

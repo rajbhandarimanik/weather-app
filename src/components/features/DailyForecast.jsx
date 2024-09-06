@@ -19,65 +19,44 @@ const iconMap = {
   nightRain: 'WiNightAltRain',
 };
 
-const weatherData = [
-  {
-    day: 'Sunday',
-    date: '2024-08-11',
-    temperature: {
-      high: 285,
-      low: 277,
-    },
-    icon: 'sunny', // Icon could be a string or a path to an image
-  },
-  {
-    day: 'Monday',
-    date: '2024-08-12',
-    temperature: {
-      high: 288,
-      low: 272,
-    },
-    icon: 'cloudy',
-  },
-  {
-    day: 'Tuesday',
-    date: '2024-08-13',
-    temperature: {
-      high: 282,
-      low: 268,
-    },
-    icon: 'rainy',
-  },
-  {
-    day: 'Wednesday',
-    date: '2024-08-14',
-    temperature: {
-      high: 290,
-      low: 275,
-    },
-    icon: 'thunderstorm',
-  },
-  {
-    day: 'Thursday',
-    date: '2024-08-15',
-    temperature: {
-      high: 278,
-      low: 265,
-    },
-    icon: 'windy',
-  },
-];
+const showLoading = () => {
+  return (
+    <Card className="col-span-2 row-span-3">
+      <CardHeader title="daily forecast" />
+      <div className="h-full flex flex-col justify-center content-center items-center">
+        <div className="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </Card>
+  );
+};
+
+const showError = () => {
+  return (
+    <Card className="col-span-2 row-span-3">
+      <CardHeader title="daily forecast" />
+      <div className="h-full flex flex-col justify-center content-center items-center">
+        <p>Error Occurred</p>
+      </div>
+    </Card>
+  );
+};
 
 const DailyForecast = () => {
-  const { data, isLoading } = useDailyForecast();
-
-  const listData = data ? data : weatherData;
+  const { data: listData, isLoading, isError } = useDailyForecast();
 
   const [maxTemp, setMaxTemp] = useState('273');
   const [minTemp, setMinTemp] = useState('273');
   const [widthRatio, setWidthRatio] = useState(10);
 
   useEffect(() => {
-    const allTemps = listData.flatMap((day) => [
+    if (isError || isLoading) {
+      return;
+    }
+
+    const allTemps = listData?.flatMap((day) => [
       day.temperature.high,
       day.temperature.low,
     ]);
@@ -96,34 +75,27 @@ const DailyForecast = () => {
     } else {
       setWidthRatio(0); // Handle the case where all temperatures are the same
     }
-  }, [listData]);
+  }, [isError, isLoading]);
+
+  // Show loading state if data is still being fetched
+  if (isLoading) {
+    return showLoading();
+  }
+
+  // Show loading state if data is still being fetched
+  if (isError) {
+    return showError();
+  }
 
   const listItems = listData?.map((day, index) => {
-    const { icon: iconCode } = day;
-    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`; // Construct icon URL
     return (
-      <li
+      <DayItems
         key={index}
-        className="flex grow flex-row justify-between items-center first:border-t first:border-slate-700"
-      >
-        <span className="capitalize w-12 text-md">
-          {index === 0 ? 'today' : day.day.toLowerCase().slice(0, 3)}
-        </span>
-        <div className="w-12 flex flex-col items-center">
-          {/* <DynamicIcon iconName={iconMap[day.icon]} /> */}
-          <img src={iconUrl} alt="Weather Icon" className="" />
-        </div>
-        <div className="flex flex-row gap-4 justify-around content-center">
-          <span>{day.temperature.low}º</span>
-          <SvgBar
-            lowTemp={minTemp}
-            minTemp={day.temperature.low}
-            maxTemp={day.temperature.high}
-            widthRatio={widthRatio}
-          />
-          <span>{day.temperature.high}º</span>
-        </div>
-      </li>
+        data={day}
+        index={index}
+        minTemp={minTemp}
+        widthRatio={widthRatio}
+      />
     );
   });
 
@@ -138,7 +110,41 @@ const DailyForecast = () => {
 };
 export default DailyForecast;
 
-function SvgBar({ lowTemp, minTemp, maxTemp, widthRatio }) {
+{
+  /**Daily Item component. */
+}
+
+export const DayItems = ({ index, data: day, minTemp, widthRatio }) => {
+  const { icon: iconCode } = day;
+  const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`; // Construct icon URL
+  return (
+    <li className="flex grow flex-row justify-between items-center first:border-t first:border-slate-700">
+      <span className="capitalize w-12 text-md">
+        {index === 0 ? 'today' : day.day.toLowerCase().slice(0, 3)}
+      </span>
+      <div className="w-12 flex flex-col items-center">
+        {/* <DynamicIcon iconName={iconMap[day.icon]} /> */}
+        <img src={iconUrl} alt="Weather Icon" className="" />
+      </div>
+      <div className="flex flex-row gap-4 justify-around content-center">
+        <span>{day.temperature.low}º</span>
+        <SvgBar
+          lowTemp={minTemp}
+          minTemp={day.temperature.low}
+          maxTemp={day.temperature.high}
+          widthRatio={widthRatio}
+        />
+        <span>{day.temperature.high}º</span>
+      </div>
+    </li>
+  );
+};
+
+{
+  /**Svg Bar component. */
+}
+
+export const SvgBar = ({ lowTemp, minTemp, maxTemp, widthRatio }) => {
   const getStartingPosition = (low, min) => {
     const difference = min - low;
     let startPosition = Math.round(difference * widthRatio);
@@ -229,4 +235,4 @@ function SvgBar({ lowTemp, minTemp, maxTemp, widthRatio }) {
       </svg>
     </span>
   );
-}
+};

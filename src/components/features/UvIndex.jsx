@@ -10,7 +10,7 @@ const UvIndex = () => {
   return (
     <Card className="col-span-1">
       <div className="flex flex-row justify-between">
-        <CardHeader title="uvIndex" />
+        <CardHeader title="uv index" />
         <TiInfo className="text-yellow-500 " />
       </div>
       <div className="grow pt-2">

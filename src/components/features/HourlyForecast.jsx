@@ -24,7 +24,33 @@ import { useEffect, useState } from 'react';
 import { list } from 'postcss';
 
 const HourlyForecast = () => {
-  const { data } = useHourlyForecast();
+  const { data, isLoading, isError } = useHourlyForecast();
+
+  if (isLoading) {
+    return (
+      <Card className="col-span-2 md:col-span-3 lg:col-span-4">
+        <div className="w-full h-full flex flex-col justify-center content-center items-center">
+          <div class="lds-ripple">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </Card>
+    );
+  }
+
+  if (isError) {
+    return (
+      <Card>
+        <div className="col-span-2 md:col-span-3 lg:col-span-4">
+          <div class="lds-ripple">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </Card>
+    );
+  }
 
   const listItems = data?.map((item, index) => {
     const { dateTime, temp, icon: iconCode } = item;

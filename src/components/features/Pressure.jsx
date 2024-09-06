@@ -27,7 +27,10 @@ const Pressure = () => {
     return (
       <Card>
         <div className="h-full flex flex-col justify-center content-center items-center">
-          <p>Loading...</p>
+          <div class="lds-ripple">
+            <div></div>
+            <div></div>
+          </div>
         </div>
       </Card>
     );
@@ -35,10 +38,6 @@ const Pressure = () => {
 
   if (isError) {
     return <p>Error loading weather data. Please try again later.</p>;
-  }
-
-  if (!currentWeather) {
-    return null;
   }
 
   // Destructuring currentWeather object

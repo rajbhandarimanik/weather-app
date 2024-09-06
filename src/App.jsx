@@ -20,18 +20,20 @@ import { useEffect, useState } from 'react';
 
 import { motion } from 'framer-motion';
 
-function App() {
-  const [isExpanded, setIsExpanded] = useState(false);
+import { TiInfo } from 'react-icons/ti';
 
-  const handleClick = () => {
-    setIsExpanded(!isExpanded);
-  };
+function App() {
+  //const [isExpanded, setIsExpanded] = useState(false);
+
+  // const handleClick = () => {
+  //   setIsExpanded(!isExpanded);
+  // };
 
   return (
     <div className="min-h-dvh min-w-full bg-gradient-to-b from-blue-950 to-purple-950 text-white pb-4">
-      <Header isExpanded={isExpanded} />
-
-      <section className="container px-4 md:px-4 mx-auto xl:w-9/12 2xl:w-7/12 mt-16 md:mt-6 pt-4">
+      {/* <Header isExpanded={isExpanded} /> */}
+      <Header />
+      <section className="container px-4 md:px-4 mx-auto xl:w-9/12 2xl:w-7/12 mt-12 md:mt-6 pt-4">
         <div
           className="grid grid-cols-2 grid-rows-4 auto-rows-fr gap-3 grid-flow-row-dense
         sm:grid-cols-2 
@@ -42,7 +44,8 @@ function App() {
         >
           <HourlyForecast />
 
-          <Map handleClick={handleClick} isExpanded={isExpanded} />
+          {/* <Map handleClick={handleClick} isExpanded={isExpanded} /> */}
+          <Map />
 
           <DailyForecast />
 
@@ -66,6 +69,10 @@ function App() {
 
           <Averages />
         </div>
+      </section>
+      <section className="container mx-auto flex gap-2 justify-center items-center mt-4">
+        <TiInfo className="text-yellow-500"></TiInfo>
+        <p className="text-sm italic"> Data available in next versions.</p>
       </section>
     </div>
   );
