@@ -6,7 +6,7 @@ export const formatUnixToTime = (unixTime) => {
   const minuteString = (minutes) => {
     if (minutes == 0) return '';
     else if (minutes < 9) return `:0${minutes}`;
-    else return minutes;
+    else return `:${minutes}`;
   };
 
   const amPm = hours >= 12 ? 'PM' : 'AM';
