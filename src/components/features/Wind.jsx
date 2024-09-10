@@ -1,16 +1,22 @@
 {
   /** Wind Speed and Direction */
 }
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import useCurrentWeather from '../../hooks/useCurrentWeather';
 import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
 import { animate, useAnimate } from 'framer-motion';
 import { data } from 'autoprefixer';
 import { svg } from 'leaflet';
+import { LocationContext } from '../../context/locationContext';
 
 const Wind = () => {
-  const { data: currentWeather, isLoading, isError } = useCurrentWeather();
+  const location = useContext(LocationContext);
+  const {
+    data: currentWeather,
+    isLoading,
+    isError,
+  } = useCurrentWeather(location);
 
   const [svg, setSvg] = useAnimate();
 

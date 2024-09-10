@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import useCurrentWeather from '../../hooks/useCurrentWeather';
 import { LayoutGroup, motion } from 'framer-motion';
 
+import { LocationContext } from '../../context/locationContext';
+
 const Header = ({}) => {
-  const { data: currentWeather, isLoading, isError } = useCurrentWeather();
-  const loading = true;
+  const location = useContext(LocationContext);
+  const {
+    data: currentWeather,
+    isLoading,
+    isError,
+  } = useCurrentWeather(location);
+
+  useEffect(() => {});
 
   if (isLoading) {
     return (

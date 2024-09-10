@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import { useWeatherData } from '../api/api';
+import { LocationContext } from '../context/locationContext';
 
 const useHourlyForecast = () => {
-  const lat = -37.8136;
-  const lon = 144.9631;
+  const location = useContext(LocationContext);
+  const lat = location.latitude;
+  const lon = location.longitude;
 
   const { data, ...rest } = useWeatherData(lat, lon);
 

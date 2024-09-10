@@ -5,6 +5,8 @@ const API_KEY = import.meta.env.VITE_API_KEY; // Replace with your actual API ke
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/';
 
 const fetchCurrentWeather = async (lat, lon) => {
+  console.log(lat, lon);
+
   const response = await axios.get(BASE_URL + 'weather', {
     params: {
       lat: lat,

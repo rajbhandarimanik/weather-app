@@ -7,14 +7,21 @@ import useCurrentWeather from '../../hooks/useCurrentWeather';
 import { formatUnixToTime } from '../../utils/formatUnixToTime';
 import { TiInfo } from 'react-icons/ti';
 import unixToHour from '../../utils/unixToHour';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { LocationContext } from '../../context/locationContext';
 
 {
   /** Sunrise/Sunset */
 }
 
 const Sun = () => {
-  const { data: currentWeather, isLoading, isError } = useCurrentWeather();
+  const location = useContext(LocationContext);
+
+  const {
+    data: currentWeather,
+    isLoading,
+    isError,
+  } = useCurrentWeather(location);
   const [isDay, setIsDay] = useState(null);
   const [bigTime, setBigTime] = useState(null); // Time to display in large font
   const [smallTime, setSmallTime] = useState(null); // Time to display in small text

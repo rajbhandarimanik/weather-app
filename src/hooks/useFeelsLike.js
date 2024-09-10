@@ -1,8 +1,8 @@
 import { useWeatherData } from '../api/api';
 
-const useFeelsLike = () => {
-  const lat = -37.8136;
-  const lon = 144.9631;
+const useFeelsLike = ({ latitude, longitude }) => {
+  const lat = latitude;
+  const lon = longitude;
 
   const { data, ...rest } = useWeatherData(lat, lon);
 

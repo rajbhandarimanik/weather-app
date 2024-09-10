@@ -5,9 +5,12 @@ import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
 
 import useFeelsLike from '../../hooks/useFeelsLike';
+import { useContext } from 'react';
+import { LocationContext } from '../../context/locationContext';
 
 const FeelsLike = () => {
-  const { data, isLoading, isError } = useFeelsLike();
+  const location = useContext(LocationContext);
+  const { data, isLoading, isError } = useFeelsLike(location);
 
   if (isLoading) {
     return (

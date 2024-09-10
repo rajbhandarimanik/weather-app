@@ -29,8 +29,9 @@ const HourlyForecast = () => {
   if (isLoading) {
     return (
       <Card className="col-span-2 md:col-span-3 lg:col-span-4">
-        <div className="w-full h-full flex flex-col justify-center content-center items-center">
-          <div class="lds-ripple">
+        <CardHeader title="hourly forecast" />
+        <div className="h-full flex flex-col justify-center content-center items-center">
+          <div className="lds-ripple">
             <div></div>
             <div></div>
           </div>
@@ -41,12 +42,10 @@ const HourlyForecast = () => {
 
   if (isError) {
     return (
-      <Card>
-        <div className="col-span-2 md:col-span-3 lg:col-span-4">
-          <div class="lds-ripple">
-            <div></div>
-            <div></div>
-          </div>
+      <Card className="col-span-2 md:col-span-3 lg:col-span-4">
+        <CardHeader title="hourly forecast" />
+        <div className="h-full flex flex-col justify-center content-center items-center">
+          <p>Error Occurred</p>
         </div>
       </Card>
     );

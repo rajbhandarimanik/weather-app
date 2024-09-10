@@ -1,12 +1,19 @@
 {
   /** Pressure */
 }
+import { useContext } from 'react';
 import useCurrentWeather from '../../hooks/useCurrentWeather';
 import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
+import { LocationContext } from '../../context/locationContext';
 
 const Pressure = () => {
-  const { data: currentWeather, isLoading, isError } = useCurrentWeather();
+  const location = useContext(LocationContext);
+  const {
+    data: currentWeather,
+    isLoading,
+    isError,
+  } = useCurrentWeather(location);
 
   const calculateRotationAngle = (pressure) => {
     const minPressure = 870;

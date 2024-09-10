@@ -2,12 +2,19 @@
   /** Visibility Index */
 }
 
+import { useContext } from 'react';
 import useCurrentWeather from '../../hooks/useCurrentWeather';
 import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
+import { LocationContext } from '../../context/locationContext';
 
 const Visibility = () => {
-  const { data: currentWeather, isLoading, isError } = useCurrentWeather();
+  const location = useContext(LocationContext);
+  const {
+    data: currentWeather,
+    isLoading,
+    isError,
+  } = useCurrentWeather(location);
 
   if (isLoading) {
     return (

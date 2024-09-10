@@ -1,8 +1,8 @@
 import { useCurrentWeatherData } from '../api/api';
 
-const useCurrentWeather = () => {
-  const lat = -37.8136;
-  const lon = 144.9631;
+const useCurrentWeather = ({ latitude, longitude }) => {
+  const lat = latitude;
+  const lon = longitude;
 
   const { data, isLoading, isError, error } = useCurrentWeatherData(lat, lon);
 
