@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import useCurrentWeather from '../../hooks/useCurrentWeather';
 import Card from '../ui/Card';
 import CardHeader from '../ui/CardHeader';
-import { LocationContext } from '../../context/locationContext';
+import { LocationContext } from '../../context/LocationContext';
 
 const Pressure = () => {
   const location = useContext(LocationContext);

@@ -8,7 +8,7 @@ import { formatUnixToTime } from '../../utils/formatUnixToTime';
 import { TiInfo } from 'react-icons/ti';
 import unixToHour from '../../utils/unixToHour';
 import { useContext, useEffect, useState } from 'react';
-import { LocationContext } from '../../context/locationContext';
+import { LocationContext } from '../../context/LocationContext';
 
 {
   /** Sunrise/Sunset */

@@ -6,7 +6,7 @@ import CardHeader from '../ui/CardHeader';
 
 import useFeelsLike from '../../hooks/useFeelsLike';
 import { useContext } from 'react';
-import { LocationContext } from '../../context/locationContext';
+import { LocationContext } from '../../context/LocationContext';
 
 const FeelsLike = () => {
   const location = useContext(LocationContext);
@@ -16,10 +16,7 @@ const FeelsLike = () => {
     return (
       <Card>
         <div className="h-full flex flex-col justify-center content-center items-center">
-          <div class="lds-ripple">
-            <div></div>
-            <div></div>
-          </div>
+          <p>Error Occurred</p>
         </div>
       </Card>
     );

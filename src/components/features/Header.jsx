@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import useCurrentWeather from '../../hooks/useCurrentWeather';
 import { LayoutGroup, motion } from 'framer-motion';
 
-import { LocationContext } from '../../context/locationContext';
+import { LocationContext } from '../../context/LocationContext';
 
 const Header = ({}) => {
   const location = useContext(LocationContext);

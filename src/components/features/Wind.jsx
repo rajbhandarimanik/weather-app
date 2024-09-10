@@ -8,7 +8,7 @@ import CardHeader from '../ui/CardHeader';
 import { animate, useAnimate } from 'framer-motion';
 import { data } from 'autoprefixer';
 import { svg } from 'leaflet';
-import { LocationContext } from '../../context/locationContext';
+import { LocationContext } from '../../context/LocationContext';
 
 const Wind = () => {
   const location = useContext(LocationContext);

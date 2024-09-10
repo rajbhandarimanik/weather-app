@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useWeatherData } from '../api/api';
-import { LocationContext } from '../context/locationContext';
+import { LocationContext } from '../context/LocationContext';
 
 const useHourlyForecast = () => {
   const location = useContext(LocationContext);
