@@ -14,6 +14,7 @@ import Precipitation from './components/features/Precipitation';
 import Visibility from './components/features/Visibility';
 import Map from './components/features/Map';
 import Header from './components/features/Header';
+import Canvas from './components/ui/Canvas';
 
 import { useWeatherData } from './api/api';
 import { createContext, useEffect, useState } from 'react';
@@ -39,15 +40,24 @@ function App() {
     }
   }, [location]);
 
+  // return (
+  //   <LocationContext.Provider value={latLon}>
+  //     <div className="min-h-dvh min-w-full text-white pb-4">
+  //       <Canvas /> {/* Render the Canvas component */}
+  //     </div>
+  //   </LocationContext.Provider>
+  // );
+
   return (
     <LocationContext.Provider value={latLon}>
-      <div className="min-h-dvh min-w-full bg-gradient-to-b from-blue-950 to-purple-950 text-white pb-4">
+      <div className="min-h-dvh min-w-full text-white pb-4">
+        <Canvas /> {/* Render the Canvas component */}
         {/* <Header isExpanded={isExpanded} /> */}
         <Header />
         <section className="container px-4 md:px-4 mx-auto xl:w-9/12 2xl:w-7/12 mt-12 md:mt-6 pt-4">
           <div
             className="grid grid-cols-2 grid-rows-4 auto-rows-fr gap-3 grid-flow-row-dense
-        sm:grid-cols-2 
+        sm:grid-cols-2
         md:grid-cols-3
         lg:grid-cols-4
         xl:grid-cols-5
