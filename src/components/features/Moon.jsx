@@ -13,7 +13,7 @@ const Moon = () => {
     <Card className="col-span-1">
       <div className="flex flex-row justify-between">
         <CardHeader title="moon" />
-        <TiInfo className="text-yellow-500 " />
+        <TiInfo className="text-yellow-500" />
       </div>
       <div className="grow flex justify-center content-center mt-1">
         <img src={moon} alt="moon image" className=" object-contain" />
