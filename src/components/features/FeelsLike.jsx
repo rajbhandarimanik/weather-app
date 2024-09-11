@@ -14,16 +14,27 @@ const FeelsLike = () => {
 
   if (isLoading) {
     return (
-      <Card>
+      <Card className="col-span-1">
+        <CardHeader title="feels like"></CardHeader>
         <div className="h-full flex flex-col justify-center content-center items-center">
-          <p>Error Occurred</p>
+          <div className="lds-ripple ">
+            <div></div>
+            <div></div>
+          </div>
         </div>
       </Card>
     );
   }
 
   if (isError) {
-    return <p>Error loading weather data. Please try again later.</p>;
+    return (
+      <Card className="col-span-1">
+        <CardHeader title="feels like"></CardHeader>
+        <div className="h-full flex flex-col justify-center content-center items-center">
+          <p>Error Occurred</p>
+        </div>
+      </Card>
+    );
   }
   return (
     <Card className="col-span-1">

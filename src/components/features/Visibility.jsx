@@ -18,7 +18,8 @@ const Visibility = () => {
 
   if (isLoading) {
     return (
-      <Card>
+      <Card className="col-span-1">
+        <CardHeader title="visibility"></CardHeader>
         <div className="h-full flex flex-col justify-center content-center items-center">
           <div class="lds-ripple">
             <div></div>
@@ -30,7 +31,14 @@ const Visibility = () => {
   }
 
   if (isError) {
-    return <p>Error loading weather data. Please try again later.</p>;
+    return (
+      <Card className="col-span-1">
+        <CardHeader title="visibility"></CardHeader>
+        <div className="h-full flex flex-col justify-center content-center items-center">
+          <p>Error Occurred</p>
+        </div>
+      </Card>
+    );
   }
 
   if (!currentWeather) {

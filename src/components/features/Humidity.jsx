@@ -18,7 +18,8 @@ const Humidity = () => {
 
   if (isLoading) {
     return (
-      <Card>
+      <Card className="col-span-1">
+        <CardHeader title="humidity" />
         <div className="h-full flex flex-col justify-center content-center items-center">
           <div class="lds-ripple">
             <div></div>
@@ -30,7 +31,14 @@ const Humidity = () => {
   }
 
   if (isError) {
-    return <p>Error loading weather data. Please try again later.</p>;
+    return (
+      <Card className="col-span-1">
+        <CardHeader title="humidity" />
+        <div className="min-h-24 h-full flex flex-col justify-center content-center items-center">
+          <p>Error Ocurred</p>
+        </div>
+      </Card>
+    );
   }
 
   if (!currentWeather) {
@@ -41,7 +49,7 @@ const Humidity = () => {
   const { humidity } = currentWeather;
 
   return (
-    <Card className="col-span-1 card">
+    <Card className="col-span-1">
       <CardHeader title="humidity" />
       <p className="text-3xl pt-2 grow">{humidity}%</p>
       <p className="text-xs opacity-60">The dew point is 8º right now.</p>

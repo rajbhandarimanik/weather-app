@@ -59,7 +59,8 @@ const Sun = () => {
 
   if (isLoading) {
     return (
-      <Card>
+      <Card className="col-span-1">
+        <CardHeader title="sunrise"></CardHeader>
         <div className="h-full flex flex-col justify-center content-center items-center">
           <div className="lds-ripple">
             <div></div>
@@ -71,7 +72,14 @@ const Sun = () => {
   }
 
   if (isError) {
-    return <p>Error loading weather data. Please try again later.</p>;
+    return (
+      <Card className="col-span-1">
+        <CardHeader title="sunrise"></CardHeader>
+        <div className="h-full flex flex-col justify-center content-center items-center">
+          <p>Error Ocurred</p>
+        </div>
+      </Card>
+    );
   }
 
   const { sunrise, sunset } = currentWeather;

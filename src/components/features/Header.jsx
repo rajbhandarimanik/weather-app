@@ -38,7 +38,25 @@ const Header = ({}) => {
   }
 
   if (isError) {
-    return <p>Error loading weather data. Please try again later.</p>;
+    return (
+      <section className="container mx-auto flex justify-center py-8">
+        <div className="w-fit text-center space-y-0">
+          <div className="animate-pulse">
+            <h1 className="bg-gray-500/30 rounded h-4 w-32 mb-2"></h1>
+            <h3 className="bg-gray-500/30 rounded h-2 w-16 mx-auto mb-1"></h3>
+          </div>
+
+          <div className="h-24 flex flex-col justify-center content-center items-center">
+            <p>Error Occurred</p>
+          </div>
+
+          <div className="animate-pulse">
+            <h2 className="bg-gray-500/30 rounded h-3 w-24 mx-auto mb-1"></h2>
+            <p className="bg-gray-500/30 rounded h-2 w-16 mx-auto"></p>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   if (!currentWeather) {

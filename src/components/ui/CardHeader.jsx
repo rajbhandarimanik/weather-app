@@ -2,7 +2,7 @@ import { useDeferredValue, useEffect, useState } from 'react';
 import DynamicIcon from './DynamicIcon';
 
 const headersIcons = {
-  'hourly Forecast': 'WiTime10',
+  'hourly forecast': 'WiTime10',
   'precipitation map': 'WiUmbrella',
   averages: 'TiChartLineOutline',
   'daily forecast': 'TiCalendar',
