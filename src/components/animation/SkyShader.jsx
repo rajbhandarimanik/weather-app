@@ -14,18 +14,18 @@ const SkyShader = () => {
 
     // Create and add the Sky
     const sky = new Sky();
-    sky.scale.setScalar(450000);
+    sky.scale.setScalar(45000);
     scene.add(sky);
 
     const sun = new THREE.Vector3();
 
     const effectController = {
-      turbidity: 10,
+      turbidity: 0,
       rayleigh: 3,
-      mieCoefficient: 0.005,
-      mieDirectionalG: 0.7,
-      elevation: 0, // Sun directly overhead
-      azimuth: 180,
+      mieCoefficient: 0.002,
+      mieDirectionalG: 0.1,
+      elevation: 1,
+      azimuth: -180,
       exposure: 0.5,
     };
 
@@ -50,7 +50,7 @@ const SkyShader = () => {
     // Initialize GUI for sun parameters
     const gui = new GUI();
     gui.add(effectController, 'turbidity', 0, 10, 1).name('Turbidity');
-    gui.add(effectController, 'rayleigh', 0.0, 100, 0.1).name('Rayleigh');
+    gui.add(effectController, 'rayleigh', -10, 10, 0.1).name('Rayleigh');
     gui
       .add(effectController, 'mieCoefficient', 0.0, 0.1, 0.001)
       .name('Mie Coefficient');
@@ -59,7 +59,6 @@ const SkyShader = () => {
       .name('Mie Directional G');
     gui.add(effectController, 'elevation', -90, 90, 0.1).name('Elevation');
     gui.add(effectController, 'azimuth', -180, 180, 0.1).name('Azimuth');
-    gui.add(effectController, 'exposure', 0, 1, 0.0001).name('Exposure');
 
     gui.onChange(updateSky);
 
