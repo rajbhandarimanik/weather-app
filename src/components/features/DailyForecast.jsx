@@ -102,7 +102,7 @@ const DailyForecast = () => {
   return (
     <Card className="col-span-2 row-span-3">
       <CardHeader title="daily forecast" />
-      <ul className="pt-4 h-full w-full grow flex flex-col divide-y  divide-slate-700 justify-between">
+      <ul className="pt-4 h-full w-full grow flex flex-col divide-y  divide-gray-200/20 justify-between">
         {listItems}
       </ul>
     </Card>
@@ -118,7 +118,7 @@ export const DayItems = ({ index, data: day, minTemp, widthRatio }) => {
   const { icon: iconCode } = day;
   const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`; // Construct icon URL
   return (
-    <li className="flex grow flex-row justify-between items-center first:border-t first:border-slate-700">
+    <li className="flex grow flex-row justify-between items-center first:border-t first:border-gray-200/20">
       <span className="capitalize w-12 text-md">
         {index === 0 ? 'today' : day.day.toLowerCase().slice(0, 3)}
       </span>

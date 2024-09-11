@@ -79,7 +79,7 @@ const Header = ({}) => {
           transition: { duration: 1 },
         }}
       >
-        <div className="w-fit text-center">
+        <div className="w-fit text-center drop-shadow-md">
           <h1 className="text-2xl">{city}</h1>
           <h3 className="uppercase font-bold text-xs">{city}</h3>
           <span className="text-6xl font-thin">{Math.floor(temp)}º</span>

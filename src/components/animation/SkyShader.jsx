@@ -25,7 +25,7 @@ const SkyShader = () => {
       mieCoefficient: 0.002,
       mieDirectionalG: 0.1,
       elevation: 1,
-      azimuth: -180,
+      azimuth: 180,
       exposure: 0.5,
     };
 
@@ -50,7 +50,7 @@ const SkyShader = () => {
     // Initialize GUI for sun parameters
     const gui = new GUI();
     gui.add(effectController, 'turbidity', 0, 10, 1).name('Turbidity');
-    gui.add(effectController, 'rayleigh', -10, 10, 0.1).name('Rayleigh');
+    gui.add(effectController, 'rayleigh', 0, 10, 0.1).name('Rayleigh');
     gui
       .add(effectController, 'mieCoefficient', 0.0, 0.1, 0.001)
       .name('Mie Coefficient');
