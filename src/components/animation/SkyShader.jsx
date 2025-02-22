@@ -1,72 +1,58 @@
-import React, { useEffect } from 'react';
-import { useThree } from '@react-three/fiber';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { useThree } from '@react-three/fiber';
 import { Sky } from 'three/examples/jsm/objects/Sky';
-import { GUI } from 'lil-gui';
 
-const SkyShader = () => {
-  const { camera, scene } = useThree();
+const SkyShader = ({
+  turbidity,
+  rayleigh,
+  mieCoefficient,
+  mieDirectionalG,
+  elevation,
+  azimuth,
+}) => {
+  const { scene } = useThree();
+  const skyRef = useRef();
 
   useEffect(() => {
-    // Position the camera above the horizon and facing upward
-    camera.position.set(0, 500, 0); // Adjust height (y) and distance (z) as needed
-    camera.lookAt(0, 0, 0); // Ensure the camera looks towards the origin
-
-    // Create and add the Sky
+    // Create the Sky and store it in a ref
     const sky = new Sky();
     sky.scale.setScalar(45000);
     scene.add(sky);
+    skyRef.current = sky;
 
     const sun = new THREE.Vector3();
 
-    const effectController = {
-      turbidity: 0,
-      rayleigh: 3,
-      mieCoefficient: 0.002,
-      mieDirectionalG: 0.1,
-      elevation: 1,
-      azimuth: 180,
-      exposure: 0.5,
-    };
-
     function updateSky() {
-      const uniforms = sky.material.uniforms;
-      uniforms['turbidity'].value = effectController.turbidity;
-      uniforms['rayleigh'].value = effectController.rayleigh;
-      uniforms['mieCoefficient'].value = effectController.mieCoefficient;
-      uniforms['mieDirectionalG'].value = effectController.mieDirectionalG;
+      const uniforms = sky.material.uniforms; // Access sky uniforms
+      uniforms['turbidity'].value = turbidity;
+      uniforms['rayleigh'].value = rayleigh;
+      uniforms['mieCoefficient'].value = mieCoefficient;
+      uniforms['mieDirectionalG'].value = mieDirectionalG;
 
-      const phi = THREE.MathUtils.degToRad(90 - effectController.elevation);
-      const theta = THREE.MathUtils.degToRad(effectController.azimuth);
+      // Calculate sun position based on elevation and azimuth
+      const phi = THREE.MathUtils.degToRad(90 - elevation);
+      const theta = THREE.MathUtils.degToRad(azimuth);
 
       sun.setFromSphericalCoords(1, phi, theta);
-
       uniforms['sunPosition'].value.copy(sun);
-      camera.toneMappingExposure = effectController.exposure;
     }
 
-    updateSky();
+    updateSky(); // Initial update
 
-    // Initialize GUI for sun parameters
-    const gui = new GUI();
-    gui.add(effectController, 'turbidity', 0, 10, 1).name('Turbidity');
-    gui.add(effectController, 'rayleigh', 0, 10, 0.1).name('Rayleigh');
-    gui
-      .add(effectController, 'mieCoefficient', 0.0, 0.1, 0.001)
-      .name('Mie Coefficient');
-    gui
-      .add(effectController, 'mieDirectionalG', 0.0, 1, 0.001)
-      .name('Mie Directional G');
-    gui.add(effectController, 'elevation', -90, 90, 0.1).name('Elevation');
-    gui.add(effectController, 'azimuth', -180, 180, 0.1).name('Azimuth');
-
-    gui.onChange(updateSky);
-
-    // Cleanup GUI on component unmount
+    // Cleanup when the component is unmounted
     return () => {
-      gui.destroy();
+      scene.remove(sky);
     };
-  }, [camera, scene]);
+  }, [
+    scene,
+    turbidity,
+    rayleigh,
+    mieCoefficient,
+    mieDirectionalG,
+    elevation,
+    azimuth,
+  ]);
 
   return null;
 };

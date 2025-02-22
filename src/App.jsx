@@ -14,7 +14,7 @@ import Precipitation from './components/features/Precipitation';
 import Visibility from './components/features/Visibility';
 import Map from './components/features/Map';
 import Header from './components/features/Header';
-import Canvas from './components/ui/Canvas';
+import Canvas from './components/animation/Canvas';
 
 import { useWeatherData } from './api/api';
 import { createContext, useEffect, useState } from 'react';

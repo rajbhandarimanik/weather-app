@@ -66,7 +66,7 @@ const Map = ({ handleClick, isExpanded }) => {
           // <div className="absolute h-full flex flex-col justify-center content-center items-center bg-white/30 backdrop-blur-sm p-4 rounded-lg shadow-lg text-center w-full text-wrap z-[9999]">
           <div className="absolute inset-0 flex flex-col justify-center items-center bg-white/20 backdrop-blur-sm p-4 rounded-lg shadow-lg text-center z-[9999]">
             {locationPermission === 'pending' && (
-              <p className="text-xl font-semibold text-gray-800 max-w-full">
+              <p className="text-xl font-semibold text-gray-800 max-w-full text-wrap">
                 Please provide location permission
               </p>
             )}

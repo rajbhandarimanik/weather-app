@@ -9,7 +9,8 @@ const Card = ({ children, className }) => {
         'bg-gray-700/20 ',
         'rounded-lg',
         'backdrop-blur-lg',
-        'p-2'
+        'p-2',
+        'border-solid border border-gray-400/30'
       )}
     >
       <div className="flex flex-col h-full">{children}</div>
