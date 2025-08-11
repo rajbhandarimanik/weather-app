@@ -91,7 +91,7 @@ function App() {
             <Averages />
           </div>
         </section>
-        <section className="container mx-auto flex gap-2 justify-center items-center mt-4">
+        <section className="container mx-auto flex gap-2 justify-center items-center mt-4 relative">
           <TiInfo className="text-yellow-500"></TiInfo>
           <p className="text-sm italic"> Data available in next versions.</p>
         </section>

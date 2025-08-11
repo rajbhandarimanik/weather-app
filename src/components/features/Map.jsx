@@ -56,7 +56,7 @@ const Map = ({ handleClick, isExpanded }) => {
   return (
     <Card className="col-span-2  row-span-2">
       <div className="flex flex-row justify-between">
-        <CardHeader title="sunrise" />
+        <CardHeader title="precipitation map" />
         <TiInfo className="text-yellow-500 " />
       </div>
 
